@@ -1,4 +1,4 @@
-from typing import List, Tuple, Optional, Dict
+from typing import List, Tuple, Optional
 
 
 def load_from_file(file_name: str) -> List[List[str]]:

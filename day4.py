@@ -6,7 +6,7 @@ PATTERN_TO_MATCH = "XMAS"
 def back(pattern: List[str], i: int, j: int) -> int:
     length_pattern = len(PATTERN_TO_MATCH)
     if i >= length_pattern - 1:
-        pattern = "".join([pattern[j][i - l] for l in range(length_pattern)])
+        pattern = "".join([pattern[j][i - k] for k in range(length_pattern)])
         return 1 if pattern == PATTERN_TO_MATCH else 0
     return 0
 
@@ -14,7 +14,7 @@ def back(pattern: List[str], i: int, j: int) -> int:
 def back_up_diag(pattern: List[str], i: int, j: int) -> bool:
     length_pattern = len(PATTERN_TO_MATCH)
     if i >= length_pattern - 1 and j >= length_pattern - 1:
-        pattern = "".join([pattern[j - l][i - l] for l in range(length_pattern)])
+        pattern = "".join([pattern[j - k][i - k] for k in range(length_pattern)])
         return 1 if pattern == PATTERN_TO_MATCH else 0
     return 0
 
@@ -22,7 +22,7 @@ def back_up_diag(pattern: List[str], i: int, j: int) -> bool:
 def up(pattern: List[str], i: int, j: int) -> bool:
     length_pattern = len(PATTERN_TO_MATCH)
     if j >= length_pattern - 1:
-        pattern = "".join([pattern[j - l][i] for l in range(length_pattern)])
+        pattern = "".join([pattern[j - k][i] for k in range(length_pattern)])
         return 1 if pattern == PATTERN_TO_MATCH else 0
     return 0
 
@@ -31,7 +31,7 @@ def forward_up_diag(pattern: List[str], i: int, j: int) -> bool:
     length_pattern = len(PATTERN_TO_MATCH)
     length_text = len(pattern[0])
     if i <= length_text - length_pattern and j >= length_pattern - 1:
-        pattern = "".join([pattern[j - l][i + l] for l in range(length_pattern)])
+        pattern = "".join([pattern[j - k][i + k] for k in range(length_pattern)])
         return 1 if pattern == PATTERN_TO_MATCH else 0
     return 0
 
@@ -48,7 +48,7 @@ def forward_down_diag(pattern: List[str], i: int, j: int) -> bool:
     length_pattern = len(PATTERN_TO_MATCH)
     length_text = len(pattern[0])
     if i <= length_text - length_pattern and j <= len(pattern) - length_pattern:
-        pattern = "".join([pattern[j + l][i + l] for l in range(length_pattern)])
+        pattern = "".join([pattern[j + k][i + k] for k in range(length_pattern)])
         return 1 if pattern == PATTERN_TO_MATCH else 0
     return 0
 
@@ -56,7 +56,7 @@ def forward_down_diag(pattern: List[str], i: int, j: int) -> bool:
 def down(pattern: List[str], i: int, j: int) -> bool:
     length_pattern = len(PATTERN_TO_MATCH)
     if j <= len(pattern) - length_pattern:
-        pattern = "".join([pattern[j + l][i] for l in range(length_pattern)])
+        pattern = "".join([pattern[j + k][i] for k in range(length_pattern)])
         return 1 if pattern == PATTERN_TO_MATCH else 0
     return 0
 
@@ -64,7 +64,7 @@ def down(pattern: List[str], i: int, j: int) -> bool:
 def back_down_diag(pattern: List[str], i: int, j: int) -> bool:
     length_pattern = len(PATTERN_TO_MATCH)
     if i >= length_pattern - 1 and j <= len(pattern) - length_pattern:
-        pattern = "".join([pattern[j + l][i - l] for l in range(length_pattern)])
+        pattern = "".join([pattern[j + k][i - k] for k in range(length_pattern)])
         return 1 if pattern == PATTERN_TO_MATCH else 0
     return 0
 
@@ -121,8 +121,8 @@ def generic_match(
     pattern = "".join(
         element
         for element in [
-            return_element_if_in_bounds(pattern, operator1(i, l), operator2(j, l))
-            for l in range(length_pattern)
+            return_element_if_in_bounds(pattern, operator1(i, k), operator2(j, k))
+            for k in range(length_pattern)
         ]
         if element is not None
     )

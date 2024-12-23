@@ -1,7 +1,7 @@
+from typing import List, Tuple, Optional
+
 BUTTON_A_COST = 3
 BUTTON_B_COST = 1
-
-from typing import List, Tuple, Optional
 
 
 def load_from_file(file_name: str) -> List[Tuple[List[int], List[int], List[int]]]:

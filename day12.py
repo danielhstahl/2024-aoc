@@ -70,7 +70,6 @@ def get_element_borders(
     right = (row_index, col_index + 1)
     down = (row_index + 1, col_index)
     left = (row_index, col_index - 1)
-    total_border = 0
     if not check_bounds(garden, up) or garden[up[0]][up[1]] != region:
         ul = (row_index, col_index)  # upper left
         ur = (row_index, col_index + 1)  # upper right
@@ -190,7 +189,7 @@ def get_all_of_region(
         for col_index, element in enumerate(row):
             spot = (row_index, col_index)
             key = get_key(spot)
-            if element == region and not key in contiguous:
+            if element == region and key not in contiguous:
                 local = {key: spot}
                 find_all_contiguous(garden, spot, region, local)
                 hold_region.append(list(local.values()))

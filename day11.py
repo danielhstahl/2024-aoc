@@ -1,3 +1,6 @@
+from typing import List
+from copy import deepcopy
+
 TEST_INPUT = ["125", "17"]
 ACTUAL_INPUT = ["0", "7", "6618216", "26481", "885", "42", "202642", "8791"]
 
@@ -6,8 +9,6 @@ ACTUAL_INPUT = ["0", "7", "6618216", "26481", "885", "42", "202642", "8791"]
 # The left half of the digits are engraved on the new left stone, and the right half of the digits are engraved on the new right stone.
 # (The new numbers don't keep extra leading zeroes: 1000 would become stones 10 and 0.)
 # If none of the other rules apply, the stone is replaced by a new stone; the old stone's number multiplied by 2024 is engraved on the new stone.
-from typing import List
-from copy import deepcopy
 
 
 def apply_rules(stone: str) -> List[str]:
